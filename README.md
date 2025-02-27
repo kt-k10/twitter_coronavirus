@@ -1,3 +1,6 @@
+
+![giphy](https://github.com/user-attachments/assets/de4338d0-17ae-4301-80eb-034546c257d2)
+
 # Coronavirus twitter analysis (2020)
 
 This project analyzes geotagged tweets from 2020 to track the spread of coronavirus-related discussions on social media. Using MapReduce, we process a large dataset of 1.1 billion tweets to extract insights about hashtag usage across different languages and countries.
