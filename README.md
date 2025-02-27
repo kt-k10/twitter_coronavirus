@@ -29,7 +29,7 @@ python3 src/visualize.py or python3 src/alternative_reduce.py
 
 The analysis provides insights into hashtag usage by country and language, with visualizations highlighting key trends.
 
-using visualize.py:
+Using visualize.py:
 
 ![country#coronavirus](https://github.com/user-attachments/assets/a5ce2ae7-7335-4e16-9073-569df51e6aab)
 
