@@ -3,17 +3,16 @@
 # command line args
 import argparse
 parser = argparse.ArgumentParser()
-parser.add_argument('--input_path', required=True)
-parser.add_argument('--key', required=True)
-parser.add_argument('--percent', action='store_true')
-parser.add_argument('--output_path', default='output.png')  # Added to specify output path for PNG
+parser.add_argument('--input_path',required=True)
+parser.add_argument('--key',required=True)
+parser.add_argument('--percent',action='store_true')
 args = parser.parse_args()
 
 # imports
 import os
 import json
+from collections import Counter,defaultdict
 import matplotlib.pyplot as plt
-from collections import Counter, defaultdict
 
 # open the input path
 with open(args.input_path) as f:
@@ -24,28 +23,30 @@ if args.percent:
     for k in counts[args.key]:
         counts[args.key][k] /= counts['_all'][k]
 
-# prepare the data
-items = sorted(counts[args.key].items(), key=lambda item: (item[1], item[0]), reverse=False)
-
-# only take the top 10 keys
-top_items = items[:10]
-
 # print the count values
-for k, v in top_items:
-    print(k, ":", v)
+items = sorted(counts[args.key].items(), key=lambda item: (item[1],item[0]), reverse=True)
+for k,v in items:
+    print(k,':',v)
 
-# generate the bar graph
-keys = [item[0] for item in top_items]
-values = [item[1] for item in top_items]
+# generate  bar graphs for top 10 only
+items = items[0:10]
+items.reverse()
 
-plt.barh(keys, values)
-plt.xlabel('Count')
-plt.ylabel('Key')
-plt.title(f'Top 10 {args.key} Counts')
+x_axis = [item[0] for item in items]
+y_axis = [item[1] for item in items]
+x_axis2 = range(len(x_axis))
 
-# save the plot as a PNG file
-plt.savefig(args.output_path)
+plt.bar(x_axis2, y_axis)
+plt.xticks(x_axis2, x_axis)
+plt.ylabel("Count")
 
-# Optionally, show the plot (remove if not needed)
-plt.show()
 
+if args.input_path == "reduced.country":
+    plt.xlabel("Countries (Top 10)")
+    plt.title("Number of Tweets Using Hashtag in 2020 by Country")
+    plt.savefig('country' + args.key + '.png')
+
+elif args.input_path == "reduced.lang":
+    plt.xlabel("Languages (Top 10)")
+    plt.title("Number of Tweets Using Hashtag in 2020 by Language")
+    plt.savefig('lang' + args.key + '.png')
