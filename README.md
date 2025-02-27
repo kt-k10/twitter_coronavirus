@@ -1,5 +1,5 @@
 
-![giphy](https://github.com/user-attachments/assets/de4338d0-17ae-4301-80eb-034546c257d2)
+![giphy](https://github.com/user-attachments/assets/04f5db40-17d9-430e-8e1f-e7ce16b30e77)
 
 # Coronavirus twitter analysis (2020)
 
@@ -45,5 +45,4 @@ Using visualize.py:
 Using alternative_reduce.py:
 
 ![alternative_reduce py#corona](https://github.com/user-attachments/assets/0945726e-3124-4b69-9be0-cefde67dd411)
-
 
